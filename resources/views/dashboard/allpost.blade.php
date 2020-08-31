@@ -14,6 +14,22 @@
         return ($pageNumber - 1) * $pageSize;
     }
 ?>
+
+<?php
+    function status($post) {
+        $status = $post->status;
+        if($status == "Publish") {
+            return "<td style='background-color:green;'>" . $status . "</td>";
+        }
+        else 
+        {
+            return "<td style='background-color:red;'>" . $status ."</td>";
+        }
+
+    }
+?>
+
+
         <div class="product-status mg-b-15">
             <div class="container-fluid">
                 <div class="row">
@@ -35,15 +51,16 @@
                                         <th>Actions</th>
                                     </tr>
                                     <?php $no = 1; ?>
-                                    @foreach($posts as $post)                                    
+                                    @foreach($posts as $post)                                                                       
                                     <tr>
                                         <td>{{ $no + getPageOffset(10) }}</td>
                                         <td><img src="/storage/{{$post->image}}"/></td>
                                         <td>{{$post->title}}</td>
-                                        <td>
-                                            <button class="pd-setting">{{$post->status}}</button>
-                                        </td>
-                                        <td>{{$post->categories_id}}</td>
+                                        <!-- <td>
+                                            <button class="pd-setting">{{$post->color}}</button>
+                                        </td> -->
+                                        <?php echo status($post);?>
+                                        <td>{{$post->name}}</td>
                                         <td>{{$post->description}}</td>
                                         <td>{{$post->created_at}}</td>
                                         <td>{{$post->updated_at}}</td>

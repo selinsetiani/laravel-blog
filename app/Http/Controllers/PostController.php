@@ -21,6 +21,10 @@ class PostController extends Controller
 
         return view ('/dashboard/newpost', compact('categories'));
 
+        // $categories = Category::join('posts'. 'categories.id', '=', 'posts.categories_id')
+        //         ->get();
+        // return view ('/dashboard/newpost', compact('categories'));
+
     }
 
     /** get all data Post */
@@ -28,9 +32,15 @@ class PostController extends Controller
     {
         //
         $pageSize = 10;
-        $posts = Post::orderBy('created_at')->paginate($pageSize);
+        // $posts = Post::orderBy('created_at')->paginate($pageSize);
 
-        return view('/dashboard/allpost', ['posts' => $posts, 'pageSize' => $pageSize]);
+        $posts = Post::join('categories', 'categories.id', '=', 'posts.categories_id')                
+                 ->orderBy('posts.created_at')                                  
+                 ->paginate($pageSize);
+                 
+        return view ('/dashboard/allpost', ['posts' => $posts, 'pageSize' => $pageSize]);
+
+        // return view('/dashboard/allpost', ['posts' => $posts, 'pageSize' => $pageSize]);
 
         // return view ('/dashboard/allpost', compact('posts'));
 
@@ -63,6 +73,13 @@ class PostController extends Controller
         // $request->image->store('public');
 
         // saves image
+
+        $validatedData = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'description' => 'required',
+            
+        ]);
+    
         $savedPath = $request->image->store('public');
 
         // swaps the 'image' from the memory one to the saved path
@@ -71,7 +88,7 @@ class PostController extends Controller
         
         Post::create($dictionary);                
 
-        return redirect('/allpost');
+        return redirect('/mypost');
     }
 
     /**

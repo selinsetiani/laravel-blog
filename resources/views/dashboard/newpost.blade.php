@@ -22,7 +22,10 @@
                                         <div class="form-group">
                                             <label class="col-lg-1 control-label text-left">Title:</label>
                                             <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12">
-                                                <input name="title" type="text" class="form-control input-sm" placeholder="Title">
+                                                <input id="title" name="title" type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Title">
+                                                @error('title')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -37,14 +40,15 @@
                                                      @endforeach
                                                 </select>
                                             </div>
-                                            <!-- <input type="hidden" class="form-control"
-                                                     id="hidden-item-id" readonly  value="{{$category->id}}" name="categories_id"> -->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-1 control-label text-left">Description</label>
                                             <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12">
-                                                <textarea name="description" type="text" class="form-control input-sm" placeholder="Description"></textarea>
+                                                <textarea id="description" name="description" type="text" class="form-control @error('description') is-invalid @enderror" placeholder="Description"></textarea>
+                                                @error('description')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group">
