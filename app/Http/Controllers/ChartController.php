@@ -41,17 +41,21 @@ class ChartController extends Controller
         $range = \Carbon\Carbon::now()->subDays($days);
         Log::debug("Getting range from now and days later");
         
+        DB::enableQueryLog();
         $stats = Post::where('created_at', '>=', $range)
-        ->groupBy('date', 'status')    
+        ->groupBy('date')    
         ->orderBy('date', 'DESC')        
         ->get([
-            DB::raw('Date(created_at) as date'),
+            DB::raw('Date(created_at) as date'),            
             DB::raw('COUNT(*) as Total'),
-            DB::raw('8 as Draft'),
-            DB::raw('3 as Publish')            
+            DB::raw("SUM(CASE WHEN status = 'Draft' THEN 1 ELSE 0 END) as Draft"),
+            DB::raw("SUM(CASE WHEN status = 'Publish' THEN 1 ELSE 0 END) as Publish"),
+            // DB::raw("(SELECT COUNT(*) WHERE status = 'Draft') as Draft"),
+            // DB::raw("(SELECT COUNT(*) WHERE status = 'Publish') as Publish")          
         ])
         ->toJSON();
 
+        Log::debug(DB::getQueryLog());
         Log::debug("Doing database stuff");
         
         return $stats;

@@ -9,7 +9,7 @@
         //ykeys: ['value'],
         ykeys: ['Draft', 'Publish', 'Total'],
         labels: ['Draft', 'Publish', 'Total'],
-        barColors:['#006DF0', '#933EC5', '#65b12d'],
+        barColors:['#933EC5', '#006DF0', '#65b12d'],
         hideHover: 'auto',
             barSizeRatio:0.45,  
         gridLineColor: '#eef0f2',
