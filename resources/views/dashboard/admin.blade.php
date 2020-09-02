@@ -141,7 +141,7 @@ function requestData(days, chart){
     })
     .done(function( data ) {
         // When the response to the AJAX request comes back render the chart with new data
-        console.log("Received data", data)
+        console.log("Received data", data)        
         chart.setData(JSON.parse(data));
     })
     .fail(function() {

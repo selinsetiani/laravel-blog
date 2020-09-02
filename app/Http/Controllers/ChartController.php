@@ -46,8 +46,9 @@ class ChartController extends Controller
         ->orderBy('date', 'DESC')        
         ->get([
             DB::raw('Date(created_at) as date'),
-            DB::raw('COUNT(*) as value'),
-            DB::raw('status')
+            DB::raw('COUNT(*) as Total'),
+            DB::raw('8 as Draft'),
+            DB::raw('3 as Publish')            
         ])
         ->toJSON();
 
