@@ -11,23 +11,22 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
-                                <h5>Computer Technologies</h5>
-                                <h2>$<span class="counter">5000</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-success">20%</span>
+                                <h5>Publish Post</h5>
+                                <h2><span class="counter">{{$publishedCount}}</span></h2>
                                 <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:20%;"> <span class="sr-only">20% Complete</span> </div>
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:100%;"> <span class="sr-only">20% Complete</span> </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
-                                <h5>Accounting Technologies</h5>
-                                <h2>$<span class="counter">3000</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-danger">30%</span>
+                                <h5>Draft Post</h5>
+                                <h2><span class="counter">{{$draftCount}}</span></h2>
                                 <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:30%;"> <span class="sr-only">230% Complete</span> </div>
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:100%;"> <span class="sr-only">230% Complete</span> </div>
                                 </div>
                             </div>
                         </div>
@@ -35,23 +34,10 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
                             <div class="analytics-content">
-                                <h5>Electrical Engineering</h5>
-                                <h2>$<span class="counter">2000</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-info">60%</span>
+                                <h5>Total Post</h5>
+                                <h2><span class="counter">{{$allpost}}</span></h2>
                                 <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%;"> <span class="sr-only">20% Complete</span> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
-                            <div class="analytics-content">
-                                <h5>Chemical Engineering</h5>
-                                <h2>$<span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
-                                <span class="text-inverse">80%</span>
-                                <div class="progress m-b-0">
-                                    <div class="progress-bar progress-bar-inverse" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">230% Complete</span> </div>
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:100%;"> <span class="sr-only">20% Complete</span> </div>
                                 </div>
                             </div>
                         </div>
@@ -68,47 +54,49 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="caption pro-sl-hd">
-                                            <span class="caption-subject"><b>University Earnings</b></span>
+                                            <span class="caption-subject"><b>Statistic Post</b></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="actions graph-rp graph-rp-dl">
-                                            <p>All Earnings are in million $</p>
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <ul class="list-inline cus-product-sl-rp">
                                 <li>
-                                    <h5><i class="fa fa-circle" style="color: #006DF0;"></i>CSE</h5>
+                                    <h5><i class="fa fa-circle" style="color: #006DF0;"></i>Publish</h5>
                                 </li>
                                 <li>
-                                    <h5><i class="fa fa-circle" style="color: #933EC5;"></i>Accounting</h5>
+                                    <h5><i class="fa fa-circle" style="color: #933EC5;"></i>Draft</h5>
                                 </li>
                                 <li>
-                                    <h5><i class="fa fa-circle" style="color: #65b12d;"></i>Electrical</h5>
+                                    <h5><i class="fa fa-circle" style="color: #65b12d;"></i>Total</h5>
                                 </li>
                             </ul>
-                            <div id="extra-area-chart" style="height: 356px;"></div>
+                            <div id="morris-bar-chart" style="height: 356px;"></div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="white-box analytics-info-cs mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n">
-                            <h3 class="box-title">Total Visit</h3>
+                        <div class="white-box analytics-info-cs mg-b-10 res-mg-t-30 table-mg-t-pro-n res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
+                            <h3 class="box-title">Total Categories</h3>
                             <ul class="list-inline two-part-sp">
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-success">1500</span></li>
+                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-success"><span class="counter">1500</span></span>
+                                </li>
                             </ul>
                         </div>
                         <div class="white-box analytics-info-cs mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
-                            <h3 class="box-title">Page Views</h3>
+                            <h3 class="box-title">Total Users</h3>
                             <ul class="list-inline two-part-sp">
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right graph-two-ctn"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-purple">3000</span></li>
+                                <li class="text-right graph-two-ctn"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-purple"><span class="counter">3000</span></span>
+                                </li>
                             </ul>
                         </div>
                         <div class="white-box analytics-info-cs mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
@@ -117,10 +105,11 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right graph-three-ctn"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-info">5000</span></li>
+                                <li class="text-right graph-three-ctn"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter text-info"><span class="counter">5000</span></span>
+                                </li>
                             </ul>
                         </div>
-                        <div class="white-box analytics-info-cs table-dis-n-pro tb-sm-res-d-n dk-res-t-d-n">
+                        <div class="white-box analytics-info-cs tb-sm-res-d-n dk-res-t-d-n">
                             <h3 class="box-title">Bounce Rate</h3>
                             <ul class="list-inline two-part-sp">
                                 <li>
@@ -137,43 +126,27 @@
         <div class="traffic-analysis-area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="social-media-edu">
-                            <i class="fa fa-facebook"></i>
-                            <div class="social-edu-ctn">
-                                <h3>50k Likes</h3>
-                                <p>You main list growing</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="social-media-edu twitter-cl res-mg-t-30 table-mg-t-pro-n">
-                            <i class="fa fa-twitter"></i>
-                            <div class="social-edu-ctn">
-                                <h3>30k followers</h3>
-                                <p>You main list growing</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="social-media-edu linkedin-cl res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30">
-                            <i class="fa fa-linkedin"></i>
-                            <div class="social-edu-ctn">
-                                <h3>7k Connections</h3>
-                                <p>You main list growing</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="social-media-edu youtube-cl res-mg-t-30 res-tablet-mg-t-30 dk-res-t-pro-30">
-                            <i class="fa fa-youtube"></i>
-                            <div class="social-edu-ctn">
-                                <h3>50k Subscribers</h3>
-                                <p>You main list growing</p>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
 @endsection
+
+<script>
+function requestData(days, chart){
+    $.ajax({
+        type: "GET",
+        url: "{{url('/chart')}}", 
+        data: { days: days }
+    })
+    .done(function( data ) {
+        // When the response to the AJAX request comes back render the chart with new data
+        console.log("Received data", data)
+        chart.setData(JSON.parse(data));
+    })
+    .fail(function() {
+        // If there is no communication between the server, show an error
+        alert( "error occured" );
+    });
+}
+</script>

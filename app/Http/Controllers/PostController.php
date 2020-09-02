@@ -27,6 +27,27 @@ class PostController extends Controller
 
     }
 
+
+    public function grafik()
+    {
+        $publishedCount = Post::all()
+            ->where('status', 'Publish')
+            ->count();
+
+        $draftCount = Post::all()
+            ->where('status', 'Draft')
+            ->count();
+
+        $allpost = Post::all()
+            ->count();
+
+        return view ('/dashboard/admin',  compact('publishedCount', 'draftCount', 'allpost'));
+
+    }
+
+
+
+
     /** get all data Post */
     public function data()
     {
@@ -77,7 +98,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|unique:posts|max:255',
             'description' => 'required',
-            
+
         ]);
     
         $savedPath = $request->image->store('public');

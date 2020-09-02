@@ -27,6 +27,9 @@
     <!-- animate CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('dashboard/css/animate.css') }}">
+     <!-- modals CSS
+		============================================ -->
+        <link rel="stylesheet" href="{{ asset('css/modals.css') }}">
     <!-- normalize CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('dashboard/css/normalize.css') }}">
@@ -37,8 +40,6 @@
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('dashboard/css/main.css') }}">
 
-    <!-- summernote CSS for the text editor
-        ============================================ -->
     <!-- x-editor CSS
         ============================================ -->
         
@@ -75,7 +76,7 @@
 
     <!-- all type forms -->
 
-    <link rel="stylesheet" href="{{asset('dashboard/css/form/all-type-forms.css')}}">
+    <link rel="stylesheet" href="{{ asset('dashboard/css/form/all-type-forms.css') }}">
     <!-- modernizr JS
 		============================================ -->
     <script src="{{ asset('dashboard/js/vendor/modernizr-2.8.3.min.js') }}"></script>
@@ -982,7 +983,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> . All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Fishery</a></p>
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> . All rights reserved. Design by <a href="https://colorlib.com/wp/templates/">Fishery</a></p>
                         </div>
                     </div>
                 </div>
@@ -1032,6 +1033,8 @@
     <script src="{{ asset('dashboard/js/morrisjs/raphael-min.js') }}"></script>
     <script src="{{ asset('dashboard/js/morrisjs/morris.js') }}"></script>
     <script src="{{ asset('dashboard/js/morrisjs/morris-active.js') }}"></script>
+    <script src="{{ asset('dashboard/js/morrisjs/home3-active.js') }}"></script>
+    <script src="{{ asset('dashboard/js/morrisjs/morris-active-pro.js') }}"></script>
     <!-- morrisjs JS
 		============================================ -->
     <script src="{{ asset('dashboard/js/sparkline/jquery.sparkline.min.js') }}"></script>
@@ -1042,10 +1045,7 @@
     <script src="{{ asset('dashboard/js/calendar/moment.min.js') }}"></script>
     <script src="{{ asset('dashboard/js/calendar/fullcalendar.min.js') }}"></script>
     <script src="{{ asset('dashboard/js/calendar/fullcalendar-active.js') }}"></script>
-     <!-- summernote JS
-		============================================ -->
-        <script src="{{ asset('dashboard/js/summernote/summernote.min.js') }}"></script>
-        <script src="{{ asset('dashboard/js/summernote/summernote-active.js') }}"></script>
+     
      <!-- form validate JS
 		============================================ -->
         <script src="{{ asset('dashboard/js/form-validation/jquery.form.min.js') }}"></script>

@@ -44,10 +44,10 @@ Route::get('/blog-kapal', function () {
 
 // dashboard //
 
-Route::get('/admin', function () {
+// Route::get('/admin', function () {
 
-    return view('dashboard/admin');
-});
+//     return view('dashboard/admin');
+// });
 
 // Route::get('/newpostku', function () {
 
@@ -66,12 +66,16 @@ Route::get('/admin', function () {
 
 Route::get('/mypost', 'PostController@data');
 
+Route::get('/admin', 'PostController@grafik');
+
 Route::get('/addcategories', function () {
 
     return view('dashboard/addcategories');
 });
 
-// Route Controller
+Route::get('/chart', 'ChartController@chart'); // Route Chart
+
+// Route reosource Controller
 
 Route::resource('/categories', 'CategoriesController');
 

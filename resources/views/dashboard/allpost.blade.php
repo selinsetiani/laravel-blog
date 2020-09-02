@@ -19,11 +19,11 @@
     function status($post) {
         $status = $post->status;
         if($status == "Publish") {
-            return "<td style='background-color:green;'>" . $status . "</td>";
+            return "<td><button class='pd-setting'>". $status . "</button></td>";
         }
         else 
         {
-            return "<td style='background-color:red;'>" . $status ."</td>";
+            return "<td><button class='ps-setting'>". $status . "</button></td>";
         }
 
     }
