@@ -35,8 +35,15 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap">
-                            <h4>All Post</h4>
-                           
+                            <h4 class="text-center">All Post</h4>
+                                <div class="breadcome-heading pb-1">
+                                    <form action="/postsearch" type="GET" role="search" class="sr-input-func">
+                                        @csrf
+                                        <input type="text" name="query" placeholder="Search..." value=""
+                                        class="search-int form-control">
+
+                                    </form>
+                                </div>
                             <div class="asset-inner">
                                 <table>
                                     <tr>
@@ -52,28 +59,20 @@
                                     </tr>
                                     <?php $no = 1; ?>
                                     @foreach($posts as $post)                                                                       
-                                    <tr>
+                                    <tr>                                        
                                         <td>{{ $no + getPageOffset(10) }}</td>
                                         <td><img src="/storage/{{$post->image}}"/></td>
                                         <td>{{$post->title}}</td>
-                                        <!-- <td>
-                                            <button class="pd-setting">{{$post->color}}</button>
-                                        </td> -->
                                         <?php echo status($post);?>
                                         <td>{{$post->name}}</td>
-                                        <td>{{$post->description}}</td>
+                                        <td id="description">{{ Illuminate\Support\Str::limit ($post->description, 20)}}</td>
                                         <td>{{$post->created_at}}</td>
                                         <td>{{$post->updated_at}}</td>
                                         <td>
-                                            <form class="form-inline" method="post" action="/allpost/{{$post->id}}">
-                                                    {{csrf_field()}}
-                                                <a href="{{route('allpost.edit', $post->id)}}"> 
-                                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                </a>
+                                                <a href="{{route('allpost.edit', $post->id)}}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                                                 <button id="delete-button" type="button" data-toggle="tooltip" title="Trash" class="pd-setting-ed" data-id="{{$post->id}}">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </button>                                            
-                                            </form>                                            
                                             
                                         </td>
                                     </tr>
@@ -94,7 +93,6 @@
     <script src="{{ asset('dashboard/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-
 
         $(document).on('click', '#delete-button', function (e) {
             console.log("DELETE BUTTON CLICKED");
@@ -132,9 +130,10 @@
                         
                     }         
                 });                             
-            })
-            ;
+            });
+            
         });
+
 </script>
 
     

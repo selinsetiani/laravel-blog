@@ -187,6 +187,9 @@
 .header-color-modal.bg-color-4{
 	background:#F45846;
 }
+.danger-modal-button {
+	background: #F45846;
+}
 .header-color-modal.bg-color-5{
 	background:#d35400;
 }

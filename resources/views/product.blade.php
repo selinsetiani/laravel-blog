@@ -13,13 +13,14 @@
            <div class="row justify-content-start mt-5 pb-3">
               <div class="col-md-12 mt-sm-5 heading-section ftco-animate">
                 <h1 class="mb-4 text-center mt-sm-5"><span>Product</span></h1>
-                <p>Produk dibawah ini adalah sebagian contoh hasil tangkapan laut dan produk lainnya yang dijual. Silahkan <a href="contact">hubungi kami</a> lebih lanjut mengenai harga dan jenis ikan.</p>
+                <p>The products below are some examples of seafood that we produce.
+                Please <a href="contact">contact us</a> for further information regarding prices, stockist, and partnership. </p>
               </div>
             </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
               <figure class="figure-caption">
-              <img src="images/kakap.jpg" class="img-figure block-20" alt="kakap">
+              <img src="images/snapper.jpg" class="img-figure block-20" alt="kakap">
               <figcaption>Kakap Merah / Red Snapper</figcaption>
               </figure>
               
@@ -28,15 +29,15 @@
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry justify-content-end">
              <figure class="figure-caption">
-              <img src="images/catfish.jpg" class="img-figure block-20" alt="catfish">
-              <figcaption>Ikan Manyung, Patin / Catfish</figcaption>
+              <img src="images/squid.jpg" class="img-figure block-20" alt="catfish">
+              <figcaption>Squid</figcaption>
               </figure>
             </div>
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry">
               <figure class="figure-caption">
-              <img src="images/ikan3.jpg" class="img-figure block-20" alt="catfish">
+              <img src="images/grouper.jpg" class="img-figure block-20" alt="catfish">
               <figcaption>Ikan Kerapu / Grouper</figcaption>
               </figure>
 
@@ -62,8 +63,8 @@
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry">
               <figure class="figure-caption">
-              <img src="images/udang.jpg" class="img-figure block-20" alt="catfish">
-              <figcaption>Cumi, Udang, Kerang, Tuna, dll</figcaption>
+              <img src="images/prawn.jpg" class="img-figure block-20" alt="catfish">
+              <figcaption>Prawn</figcaption>
               </figure>
             </div>
           </div>

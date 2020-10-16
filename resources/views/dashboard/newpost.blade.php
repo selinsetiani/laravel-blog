@@ -12,7 +12,7 @@
                         <div class="hpanel email-compose">
                             <div class="panel-heading hbuilt">
                                 <div class="p-xs h4">
-                                    New Post
+                                   <h4 class="text-center pb-2"> New Post </h4>
                                 </div>
                             </div>
                             <div class="panel-heading hbuilt">
@@ -34,8 +34,6 @@
                                             <div class="form-select-list">
                                                 <select class="form-control custom-select-value" name="categories_id">
                                                     @foreach($categories as $category)
-
-                                                        
                                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                                      @endforeach
                                                 </select>
@@ -98,8 +96,17 @@
         </div>
         <script>
             function onfileChanged() {                
-                document.getElementById('prepend-small-btn').value = document.getElementById("file-id").files[0].name;                
+                document.getElementById('prepend-small-btn').value = document.getElementById("file-id").files[0].name;                                
             }
+            
+            $(document).ready(function() {
+                $('#description').summernote({
+                    toolbar: [
+                        ['style', ['bold']],        
+                        ['para', ['paragraph']],    
+                    ]
+                });
+            });
         </script>
         
     @endsection

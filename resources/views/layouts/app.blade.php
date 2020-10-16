@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+	  <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
    
   </head>
   <body>
@@ -32,17 +35,17 @@
   @section('sidebar')
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="/"><img src="images/ikan.png"></a>
+	      <a class="navbar-brand" href="/"><img src="/images/ikan.png"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span>
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item {{current_page('/') ? 'active' : '' }}"><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item {{current_page('product') ? 'active' : '' }}"><a href="product" class="nav-link">Product</a></li>
-	          <li class="nav-item {{current_page('about') ? 'active' : '' }}"><a href="about" class="nav-link">About</a></li>
-	          <li class="nav-item {{current_page('blog') ? 'active' : '' }}"><a href="blog" class="nav-link">Blog</a></li>
-	          <li class="nav-item cta mr-md-2 mx-md-3 {{current_page('contact') ? 'active' : '' }}"><a href="contact" class="nav-link ">Contact Us</a></li>
+	          <li class="nav-item {{current_page('product') ? 'active' : '' }}"><a href="/product" class="nav-link">Product</a></li>
+	          <li class="nav-item {{current_page('about') ? 'active' : '' }}"><a href="/about" class="nav-link">About</a></li>
+	          <li class="nav-item {{current_page('blog') ? 'active' : '' }}"><a href="/blog" class="nav-link">Blog</a></li>
+	          <li class="nav-item cta mr-md-2 mx-md-3 {{current_page('contact') ? 'active' : '' }}"><a href="/contact" class="nav-link ">Contact Us</a></li>
 
 	        </ul>
 	      </div>
@@ -61,7 +64,7 @@
               <h2 class="ftco-heading-2">Find Us On</h2>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.instagram.com/fisheryindo/"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/fisheryindo/" target="_blank"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -79,7 +82,7 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Registered In</h2>
                <div class="ftco-animate">
-                <a href="https://kkp.go.id/" target="_blank"> <img src="images/perikanan.png"></a></div>
+                <a href="https://kkp.go.id/" target="_blank"> <img src="/images/perikanan.png"></a></div>
             </div>
           </div>
           <div class="col-md">
@@ -112,9 +115,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-	  <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    
 	  <script src="{{ asset('js/popper.min.jss') }}"></script>
 	  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 	  <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>

@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\CustomException;
 use Throwable;
+
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +53,34 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        if($this->isHttpException($exception))
+        {
+            
+            Log::debug("Exception ocurred", ["e" => $exception, "r" => $request]);
+            switch ($exception->getStatusCode()) 
+                {
+                // not found
+                case 404:
+                return redirect()->route('notfound');
+                break;
+    
+                // internal error
+                case '500':
+                return redirect()->route('notfound');
+                break;
+
+                //not authorised
+                case '400':
+                return redirect()->route('notfound');
+                break;
+                default:
+                    return $this->renderHttpException($exception);
+                break;
+            }
+        }
+        else
+        {
+                return parent::render($request, $exception);
+        }
     }
 }

@@ -16,7 +16,7 @@
         resize: true
     });
     
-    requestData(7, chart);
+    requestData(30, chart);
     $('ul.ranges a').click(function(e){
         e.preventDefault();
         // Get the number of days from the data attribute

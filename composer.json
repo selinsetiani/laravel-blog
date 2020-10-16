@@ -14,7 +14,10 @@
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
-        "laravel/tinker": "^2.0"
+        "laravel/scout": "^8.3",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.2",
+        "spatie/laravel-searchable": "^1.7"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

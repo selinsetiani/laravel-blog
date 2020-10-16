@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Post;
+
 
 class PostController extends Controller
 {
@@ -14,7 +17,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+     public function index()
     {
         //
         $categories = Category::all();
@@ -28,8 +36,24 @@ class PostController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+        $pageSize = 10;
+
+        $searchResults = $request->get('query');
+        $posts = Post::where('title', 'LIKE', '%'.$searchResults.'%')
+                        ->orWhere('status', 'LIKE', '%'. $searchResults. '%')
+                        ->paginate($pageSize);
+
+        return view('dashboard/allpost', ['posts' => $posts]);
+    }
+
     public function grafik()
     {
+        
+        $category = Category::all()
+            ->count();
+
         $publishedCount = Post::all()
             ->where('status', 'Publish')
             ->count();
@@ -41,7 +65,7 @@ class PostController extends Controller
         $allpost = Post::all()
             ->count();
 
-        return view ('/dashboard/admin',  compact('publishedCount', 'draftCount', 'allpost'));
+        return view ('/dashboard/admin',  compact('category', 'publishedCount', 'draftCount', 'allpost'));
 
     }
 
@@ -55,9 +79,11 @@ class PostController extends Controller
         $pageSize = 10;
         // $posts = Post::orderBy('created_at')->paginate($pageSize);
 
-        $posts = Post::join('categories', 'categories.id', '=', 'posts.categories_id')                
-                 ->orderBy('posts.created_at')                                  
-                 ->paginate($pageSize);
+        $posts = Post::join('categories', 'categories.id', '=', 'posts.categories_id')                                                       
+                 ->select("posts.*", "categories.name")
+                 ->orderBy('posts.created_at', 'desc')                
+                 ->paginate($pageSize); 
+
                  
         return view ('/dashboard/allpost', ['posts' => $posts, 'pageSize' => $pageSize]);
 
@@ -68,6 +94,7 @@ class PostController extends Controller
     }
 
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -93,16 +120,14 @@ class PostController extends Controller
         // Post::create($request->all());
         // $request->image->store('public');
 
-        // saves image
-
+        // Validation form
         $validatedData = $request->validate([
             'title' => 'required|unique:posts|max:255',
             'description' => 'required',
-
         ]);
     
+        // saves image
         $savedPath = $request->image->store('public');
-
         // swaps the 'image' from the memory one to the saved path
         $dictionary = $request->all();
         $dictionary['image'] = str_replace("public/", "", $savedPath);                        
@@ -121,6 +146,9 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        return view('/editpost', compact('post'));
     }
 
     /**
@@ -132,6 +160,16 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+
+        $categories = Category::all();
+
+        Log::debug("edit callled with id " . $id);
+        $post = Post::findOrFail($id);
+        
+        Log::debug("Post found");
+        $view = view('/dashboard/editpost', compact('post', 'categories'));
+        Log::debug("Found view");
+        return $view;
     }
 
     /**
@@ -144,6 +182,15 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $dictionary = $request->all();
+        if($request->image != null) {
+           $savedPath = $request->image->store('public');
+           $dictionary['image'] = str_replace("public/", "", $savedPath);                        
+        } 
+        $post= Post::findOrFail($id)
+                ->update($dictionary);
+        return redirect('/mypost');
     }
 
     /**
@@ -154,14 +201,33 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //delete post
-        // $Post= Post::whereId($id)->delete();
-        
-        // return redirect('/mypost');
+
+        // $dictionary = $request->all();
+        // $dictionary['image'] = str_replace("public/", "", $savedPath);        
+        // // return redirect('/mypost');
+
+        // $productImage = str_replace('/storage', '', $product->image_path);
+
+        //     Storage::delete('/public' . $productImage);
+
+
+
         Log::debug("Destory callled");
-        $Post= Post::whereId($id)->delete();
-        return "deleted ok";
-        // return back()->withInput()
-        //             ->with('success','Post deleted successfully');
+        $post = Post::findOrFail($id);                
+        $postImage = str_replace('/storage', '', $post->image);        
+        if ($postImage) {
+            Log::debug("Post image is " . $postImage);
+            Storage::delete("/public/" . $postImage);
+            $post->delete();
+            // $post->delete($id);
+
+            return "deleted ok";
+        }
+
+    }
+
+      public function pagenotfound()
+    {
+        return view('dashboard/errors');
     }
 }

@@ -13,11 +13,11 @@ class AddImageToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
+        // Schema::table('posts', function (Blueprint $table) {
+        //     //
 
-            $table->string('image');
-        });
+        //     $table->string('image');
+        // });
     }
 
     /**

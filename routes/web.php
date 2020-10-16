@@ -32,39 +32,27 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/blog', function () {
 
-    return view('blog');
-});
 
 Route::get('/blog-kapal', function () {
 
     return view('blog-kapal');
 });
 
-// dashboard //
+//user profile
+Route::get('/profile', function () {
 
-// Route::get('/admin', function () {
+    return view('/dashboard/profile');
+});
+Route::PUT('/myprofile/{id}', 'UserController@updateprofile');
 
-//     return view('dashboard/admin');
-// });
 
-// Route::get('/newpostku', function () {
+//Blog Route
+Route::get('/blog', 'BlogController@blog');
 
-//     return view('dashboard/newpost');
-// });
+Route::get('/blogdetail/{blogmore}/blogdetail', 'BlogController@blogdetail')->name('blog-detail');
 
-// Route::get('/allpost', function () {
 
-//     return view('dashboard/allpost');
-// });
-
-// Route::get('/categories', function () {
-
-//     return view('dashboard/categories');
-// });
-
-Route::get('/mypost', 'PostController@data');
 
 Route::get('/admin', 'PostController@grafik');
 
@@ -73,10 +61,52 @@ Route::get('/addcategories', function () {
     return view('dashboard/addcategories');
 });
 
+
+Route::get('/login', function () {
+
+    return view('dashboard/login');
+});
+
+
 Route::get('/chart', 'ChartController@chart'); // Route Chart
 
 // Route reosource Controller
 
-Route::resource('/categories', 'CategoriesController');
 
+Route::group(['middleware' => 'role:admin,User'], function() {
+    
+    Route::resource('/user', 'UserController');
+    Route::resource('/permission', 'PermissionController');
+    Route::resource('/role', 'RoleController');
+    
+});
+ 
+// Blog post route
+Route::resource('/categories', 'CategoriesController');    
 Route::resource('/allpost', 'PostController');
+Route::get('/mypost', 'PostController@data');
+
+
+
+Route::get('/adduser', 'UserController@adduser');
+
+Route::get('/addrole', 'RoleController@addrole');
+
+//ERROR PAGE
+Route::get('/notfound',function(){
+    return view('dashboard/errors');
+})->name('notfound');
+
+//search Route
+Route::get('/search', 'PermissionController@search');
+Route::get('/rolesearch', 'RoleController@search');
+Route::get('/postsearch', 'PostController@search');
+
+Route::get('/addpermission', 'PermissionController@addpermission');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -39,7 +39,7 @@ class ChartController extends Controller
         Log::debug("Received days from url");
 
         $range = \Carbon\Carbon::now()->subDays($days);
-        Log::debug("Getting range from now and days later");
+        Log::debug("Getting range from now and days later", ["range" => $range]);
         
         DB::enableQueryLog();
         $stats = Post::where('created_at', '>=', $range)

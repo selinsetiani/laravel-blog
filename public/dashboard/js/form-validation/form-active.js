@@ -483,7 +483,7 @@
 			{	
 				name:
 				{
-					required: 'Please enter your name'
+					required: 'Please enter name'
 				},
 				headofdepartment:
 				{
@@ -541,7 +541,7 @@
 				},
 				status:
 				{
-					required: true
+					required: true			
 				}
 			},
 			messages:
@@ -550,6 +550,7 @@
 				{
 					required: 'Please enter your name'
 				},
+			
 				headofdepartment:
 				{
 					required: 'Please enter head of department'

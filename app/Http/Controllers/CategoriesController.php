@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 
 class CategoriesController extends Controller
@@ -13,13 +14,20 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+     public function index()
     {
         //
+        
+        $pageSize = 10;
+        $categories = DB::table('categories')->paginate(10);
 
-        $categories = Category::all();
-
-        return view ('/dashboard/categories', compact('categories'));
+        return view ('/dashboard/categories', ['categories' => $categories]);
 
     }
 
@@ -71,6 +79,9 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::findOrFail($id);
+
+        return view ('/dashboard/editcategory', compact('categories'));
     }
 
     /**
@@ -83,6 +94,10 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $categories = $request->all();
+        $categories= Category::findOrFail($id)
+                ->update($categories);
+        return redirect('/categories');
     }
 
     /**
@@ -94,5 +109,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        $categories= Category::whereId($id)->delete();
+        return redirect('/categories');
     }
 }

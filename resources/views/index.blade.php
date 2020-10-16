@@ -5,16 +5,16 @@
 
 @section('content')
 
-<div class="hero-wrap js-fullheight" style="background-image: url('images/kapal.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('images/kapalbgr.jpg');" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-xl-10 ftco-animate fadeInUp ftco-animated" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4 " data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Mudah, Terjangkau, dan Terpercaya <br><span>Supplier Ikan Indonesia </span></h1>
+            <h1 class="mb-4 " data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span id="demo"></span><br><span id="subtitle"></span></span></h1>
+            <a class="btn btn-secondary btn-radius" id="btn-learn-more" style="display:none;" href="about">Learn More</a>
           </div>
         </div>
       </div>
-    </div>
-
+    </div>  
  <section class="ftco-section services-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="media-body">
                 <h3 class="heading text-center mb-3">Variant Fish</h3>
-                <p class="text-center">Menyediakan variasi ikan laut segar sesuai kebutuhan konsumen</p>
+                <p class="text-center">We provide a variety of fresh fish for your business needs</p>
               </div>
             </div>      
           </div>
@@ -43,7 +43,8 @@
                 </div>
               <div class="media-body">
                 <h3 class="heading text-center mb-3">Delivery</h3>
-                <p class="text-center">Pengiriman seluruh Indonesia dengan jasa kurir kami atau pengambilan langsung</p>
+                <p class="text-center">We support delivery around the world or collection 
+                directly</p>
               </div>
             </div>    
           </div>
@@ -55,7 +56,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading text-center mb-3">Low Price</h3>
-                <p class="text-center">Kualitas ikan terbaik dengan harga terjangkau</p>
+                <p class="text-center">High quality fresh fish at affordable prices</p>
               </div>
             </div>      
           </div>
@@ -149,4 +150,36 @@
       </div>
     </section>
 
+    <script>
+      $(document).ready(function() {
+        var i = 0;
+        var txt = 'Are you looking for a fish supplier?';
+        var subtitleText = "You are in the right place";
+        var offsetLength = subtitleText.length + txt.length;
+        var speed = 100;
+        var fasterSpeed = 20;
+        var primaryTitle = document.getElementById("demo");
+        var subTitle = document.getElementById("subtitle");
+        var primaryBtn = document.getElementById("btn-learn-more");
+
+        function typeWriter() {  
+          if (i < txt.length) {
+            primaryTitle.innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+          else if(i < offsetLength) {
+            var subtitleIndex = i - txt.length;
+
+            i++;
+            // document.getElementById("subtitle").style.display = "inline";
+            subTitle.innerHTML += subtitleText.charAt(subtitleIndex);
+            primaryBtn.style.display = 'inline';
+            setTimeout(typeWriter, fasterSpeed);    
+          }  
+        }
+
+        typeWriter();
+      });    
+</script>
 @endsection
